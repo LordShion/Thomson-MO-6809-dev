@@ -1,0 +1,7 @@
+*.o
+*.bin
+*.BIN
+*.sap
+*.fd
+*.qd
+
