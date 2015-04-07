@@ -1,6 +1,6 @@
 #LWTOOLS=/boot/apps/lwtools/bin/
-#LWTOOLS=/usr/local/bin/
-LWTOOLS=
+LWTOOLS=/usr/local/bin/
+#LWTOOLS=
 ASM=$(LWTOOLS)lwasm -9 -b
 SAPTOFD=$(LWTOOLS)saptofd
 SAPFS=$(LWTOOLS)sapfs
@@ -25,7 +25,7 @@ floppy.sap: main pic
 	$(SAPFS) -a floppy.sap TEST.PIC
 
 main: main.asm
-	$(ASM) main.asm -o AUTO.BIN
+	$(ASM) -o AUTO.BIN main.asm
 
 pic: test.png
 	$(PNG) test.png TEST.PIC

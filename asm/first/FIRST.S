@@ -8,7 +8,7 @@ main
 	ORCC #$50
 
 	; Paint screen with 0xAA pattern in FORME
-	LDA #$AA
+	LDA #$FF
 	LDX #$1F40
 boucle
 	STA ,-X
@@ -23,7 +23,7 @@ boucle
 	LDX #$1F40
 boucle2
 	STA ,-X
-	CMPX #0
+	CMPX #100
 	BNE boucle2
 
 	; Sync on VBL
@@ -41,7 +41,7 @@ mainloop
 
 	; MEA8000 Music
 
-	JMP mainloop
+;	JMP mainloop
 
 ; DATAS
 ; Location for framecounter to decide when to switch effects
