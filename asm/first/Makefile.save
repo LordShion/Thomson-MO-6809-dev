@@ -1,0 +1,30 @@
+ASM=lwasm
+
+LNK=lwlink
+
+SRC= $(wildcard *.s)
+OBJ= $(SRC:.s=.bin)
+BIN= $(OBJ:.o=.bin)
+
+EXEC=first
+
+
+all: first 
+
+first: 
+	@echo "assembling"
+	@$(ASM) -o $(OBJ) $(SRC)
+	@echo "assembly finished"
+	@#@echo "linking"
+	@#@$(LNK) -o $(BIN) $(OBJ)
+clean: 
+	@echo "cleanning......."
+	@rm -rf *.o
+	@rm -rf *.bin
+	@echo "cleanning finished"
+
+run:$(BIN:.bin=.sap)
+
+	sap2 -c $(BIN:.bin=.sap)
+	sapfs -a $(BIN)
+	sapfs -t 
