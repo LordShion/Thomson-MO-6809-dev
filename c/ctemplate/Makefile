@@ -28,7 +28,7 @@ AS=$(PREFIX)-as
 #	rm -r /mo5
 #
 # Disk Image
-floppy.sap: TEST.BIN TEST.PIC AUTO.BAT
+floppy.sap: TEST.BIN TEST.PIC
 	#cp DOS-MO.SAP $@ # Using this floppy directly results in files going above the 40th track, which MO5 DOS doesn't like.
 	sapfs -c $@ 40 2
 	sapfs -a $@ $^
@@ -58,7 +58,7 @@ clean:
 	rm -rf *.o
 	rm -rf *.sap
 	rm -rf *.BIN
-#	rm -rf *.fd
+	rm -rf *.fd
 	rm -rf *.K5
 	rm -rf *.hfe
 	rm -rf *.PIC

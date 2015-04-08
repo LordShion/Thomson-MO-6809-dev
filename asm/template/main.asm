@@ -5,7 +5,8 @@
 
 main
 	; Disable interrupts
-;	ORCC #$50
+	ORCC #$50
+;	SWI
 
 	; Paint screen with 0xAA pattern in FORME
 	LDA #$AA
@@ -41,7 +42,7 @@ mainloop
 
 	; MEA8000 Music
 
-	;JMP mainloop
+;	JMP mainloop
 
 ; DATAS
 ; Location for framecounter to decide when to switch effects

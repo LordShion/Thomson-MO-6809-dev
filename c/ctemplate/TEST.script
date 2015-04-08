@@ -1,0 +1,6 @@
+section .text.startup load 5000
+section .text
+section *,!bss
+section *,bss
+
+entry _main

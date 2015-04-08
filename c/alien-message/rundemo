@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+echo "running"
+mess to9 -nomaximize  -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
+
+
+	
+	
