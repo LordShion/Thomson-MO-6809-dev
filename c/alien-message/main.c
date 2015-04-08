@@ -1,0 +1,139 @@
+#include "thomson.h"
+
+int main()
+{
+
+	my_puts("\x1F\x20\x29\x1B\x20\x43\x1B\x20\x50\x0C\n\n\n            IN THE YEAR 2012");
+	for (int i = 25; --i >= 0;) asm(" SYNC\n");
+	my_puts("\x1B\x73\r\n\n       Shinra\r\n");
+	for (int i = 25; --i >= 0;) asm(" SYNC\n");
+	my_puts("\x1B\x70         IS PROUD TO PRESENT YOU\r\n");
+	for (int i = 25; --i >= 0;) asm(" SYNC\n");
+	my_puts("         ANOTHER PARTYMADE PROD!");
+	for (int i = 25; --i >= 0;) asm(" SYNC\n");
+	my_puts("\x1B\x73\r\n\n   ALIEN  MESSAGE\r\n");
+	for (int i = 25; --i >= 0;) asm(" SYNC\n");
+
+	asm(" ORCC #$50"); // Disable interrupts (cursor blink)
+
+#define MEA_CMD *(volatile unsigned char*)(0xA7CF)
+#define MEA_DATA *(volatile unsigned char*)(0xA7CE)
+volatile unsigned char* vram = 0;
+
+	MEA_CMD = 16 + 12;
+
+	// COLOR RAM
+	asm(" SWI\n"
+		" FCB 4");
+
+	for(int k = 73; k <= 200; k++)
+	{
+		char color = ((k+40)>>4) & 15;
+		*(vram + k * 40) = color;
+		*(vram + k * 40 + 39) = color <<4;
+	}
+	
+	char i = 0;
+	char pos = 0;
+	unsigned char z = 0;
+
+	unsigned char dir = 1;
+	unsigned char t = 20;
+
+	MEA_DATA = 0xFF;
+
+	static const unsigned char music[] =
+	{
+		0xFF, 0x80, 0x07, 0x80,
+		0x00, 0x53, 0x37, 0x90,
+		0xFF, 0x80, 0x07, 0x80,
+		0x55, 0x53, 0x37, 0x90,
+		0xFF, 0x80, 0x07, 0x80,
+		0x66, 0x53, 0x37, 0x90,
+		0xFF, 0x80, 0x07, 0x80,
+		0xBB, 0x53, 0x37, 0x90,
+
+		0xFF, 0xD2, 0x07, 0x86,
+		0x00, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x80,
+		0x55, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x80,
+		0x66, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x80,
+		0xBB, 0x53, 0x37, 0x90,
+
+		0xFF, 0xD2, 0x07, 0x9B,
+		0x00, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x80,
+		0x55, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x80,
+		0x66, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x80,
+		0xBB, 0x53, 0x37, 0x90,
+
+		0xFF, 0xD2, 0x07, 0x80,
+		0x00, 0x53, 0x37, 0x90,
+		0xFF, 0xD2, 0x07, 0x88,
+		0x55, 0x53, 0x37, 0x80,
+		0xFF, 0xD2, 0x07, 0x98,
+		0x66, 0x53, 0x37, 0x80,
+		0xFF, 0xD2, 0x07, 0x80,
+		0xBB, 0x53, 0x37, 0x83,
+	};
+
+	for(;;)
+	{
+		// AUDIO
+
+		for (int j = 0; j < 4; j++)
+		{
+			MEA_DATA = music[j | (pos<<2)];
+		}	
+		i++;
+		if (i > 6) {
+			i = 0;
+			pos ++;
+			if (pos >= 32)
+				pos = 0;
+		}
+
+		// VIDEO
+
+		for(int k = 73; k <= 200; k++)
+		{
+			// FORME RAM
+			asm(" LDX #0xA7C0	\n"
+				" LDA #0x51	\n"
+				" STA ,X	\n"
+				::
+				: "x", "a");
+			*(vram + k * 40) = z+k;
+			*(vram + k * 40 - 1) = -z+k;
+
+			// FORME RAM
+			asm(" LDX #0xA7C0	\n"
+				" LDA #0x50	\n"
+				" STA ,X	\n"
+				::
+				: "x","a"
+			);
+
+			char off = t + (k & 7);
+			*(vram + k * 40 - off) = 0x7F;
+			*(vram + k * 40 + off) = 0x7F;
+			off ++;
+			*(vram + k * 40 - off) = 0x30;
+			*(vram + k * 40 + off) = 0x30;
+
+		}
+		z++;
+		
+		t += dir;
+		if (t > 25) dir = - 1;
+		if (t < 9) dir = 1;
+
+		asm(" SYNC");
+	}
+
+	return 0;
+}
