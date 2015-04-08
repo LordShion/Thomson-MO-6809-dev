@@ -1,0 +1,37 @@
+Section: .text.startup (obj/MO5/main.o) load at 5000, length 017F
+Section: .text (obj/MO5/main.o) load at 517F, length 011E
+Section: .text (obj/MO5/thomson.o) load at 529D, length 000E
+Symbol: \02.text (obj/MO5/main.o) = 517F
+Symbol: \02.text (obj/MO5/thomson.o) = 529D
+Symbol: \02.text.startup (obj/MO5/main.o) = 5000
+Symbol: L10 (obj/MO5/main.o) = 505E
+Symbol: L11 (obj/MO5/main.o) = 505D
+Symbol: L12 (obj/MO5/main.o) = 5077
+Symbol: L13 (obj/MO5/main.o) = 50C4
+Symbol: L14 (obj/MO5/main.o) = 50F1
+Symbol: L15 (obj/MO5/main.o) = 50FA
+Symbol: L16 (obj/MO5/main.o) = 517B
+Symbol: L17 (obj/MO5/main.o) = 50B7
+Symbol: L18 (obj/MO5/main.o) = 50ED
+Symbol: L19 (obj/MO5/main.o) = 5173
+Symbol: L2 (obj/MO5/main.o) = 5012
+Symbol: L2 (obj/MO5/thomson.o) = 52A5
+Symbol: L20 (obj/MO5/main.o) = 5177
+Symbol: L24 (obj/MO5/main.o) = 50EF
+Symbol: L25 (obj/MO5/main.o) = 5179
+Symbol: L3 (obj/MO5/main.o) = 5011
+Symbol: L3 (obj/MO5/thomson.o) = 52A3
+Symbol: L4 (obj/MO5/main.o) = 5025
+Symbol: L5 (obj/MO5/main.o) = 5024
+Symbol: L6 (obj/MO5/main.o) = 5038
+Symbol: L7 (obj/MO5/main.o) = 5037
+Symbol: L8 (obj/MO5/main.o) = 504B
+Symbol: L9 (obj/MO5/main.o) = 504A
+Symbol: LC0 (obj/MO5/main.o) = 517F
+Symbol: LC1 (obj/MO5/main.o) = 51A9
+Symbol: LC2 (obj/MO5/main.o) = 51BE
+Symbol: LC3 (obj/MO5/main.o) = 51E3
+Symbol: LC4 (obj/MO5/main.o) = 5204
+Symbol: _main (obj/MO5/main.o) = 5000
+Symbol: _music.1307 (obj/MO5/main.o) = 521D
+Symbol: _my_puts (obj/MO5/thomson.o) = 529D
