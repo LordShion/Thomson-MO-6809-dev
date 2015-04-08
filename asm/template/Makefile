@@ -1,5 +1,5 @@
 #LWTOOLS=/boot/apps/lwtools/bin/
-LWTOOLS=/usr/local/bin/
+LWTOOLS=~/coco/bin/
 #LWTOOLS=
 ASM=$(LWTOOLS)lwasm -9 -b
 SAPTOFD=$(LWTOOLS)saptofd
@@ -9,15 +9,16 @@ F2K5=$(LWTOOLS)f2k5
 
 all: floppy.sap k5
 	$(SAPTOFD) floppy.sap
-	cp floppy.fd k5 ../../dcmo5/software/
-	cd ../../dcmo5 && ./dcmo5
+	#cp floppy.fd k5 ../../dcmo5/software/
+	#cd ../../dcmo5 && ./dcmo5
 	
 run:
 	@echo "running"
 	@mess mo6 -nomaximize -flop1 floppy.sap -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
 
 k5: main
-	$(F2K5) $^
+	#$(F2K5) $^
+	$(F2K5) AUTO.BIN TEST.PIC
 
 floppy.sap: main pic
 	$(SAPFS) -c floppy.sap
@@ -31,3 +32,9 @@ main: main.asm
 
 pic: test.png
 	$(PNG) test.png TEST.PIC
+clean:
+	rm floppy.sap
+	rm AUTO.BIN
+	rm TEST.PIC
+	rm floppy.fd
+	rm FILE.K5
