@@ -35,7 +35,7 @@ main: main.asm
 
 
 pic: test.png
-	$(PNG) test.png TEST.PIC
+	$(PNG) test.png $(BUILDPATH)/TEST.PIC
 
 clean:
 	@echo "cleaning..."
