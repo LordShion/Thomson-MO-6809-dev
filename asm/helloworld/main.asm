@@ -22,3 +22,6 @@ PRINT   LDA     ,X+     GET NEXT CHARACTER
 
 MESG    FCC     'HELLO WORLD!'
         FCB     0
+
+		END main
+		RTI

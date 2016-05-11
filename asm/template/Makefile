@@ -11,7 +11,7 @@ all: floppy.sap #k5
 	
 run:
 	@echo "running"
-	@mess mo6 -nomaximize -flop1 $(BUILDPATH)/floppy.sap -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
+	@mess mo6 -nomaximize ${ARGS} -flop1 $(BUILDPATH)/floppy.sap -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
 	@echo "mess ended"
 
 k5: main
