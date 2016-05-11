@@ -20,6 +20,7 @@ first:
 clean: 
 	@echo "cleanning......."
 	@rm -rf *.O
+	@rm -rf *.out
 	@rm -rf *.BIN
 	@rm -rf *.sap
 	@echo "cleanning finished"

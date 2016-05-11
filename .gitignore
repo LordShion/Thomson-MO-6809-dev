@@ -1,7 +1,10 @@
 *.o
+*.out
 *.bin
 *.BIN
 *.sap
 *.fd
 *.qd
+*.save
+*.save*
 
