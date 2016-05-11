@@ -16,7 +16,7 @@ MESS from http://www.mess.org/
 you will need also Thomson MOx roms in your mess roms folder in oder to run
 your programs under MOx emulation
 
-you can found many old computer roms from here http://cominf0.narod.ru/mess123.htm
+you can find many old computer roms from here http://cominf0.narod.ru/mess123.htm
 
 
 asm folder usage :
