@@ -23,7 +23,7 @@ floppy.sap: main pic
 	@echo "Creating mo/to floppy..."
 	$(SAPFS) -c $(BUILDPATH)/floppy.sap
 	$(SAPFS) -a $(BUILDPATH)/floppy.sap $(BUILDPATH)/AUTO.BIN
-	$(SAPFS) -a $(BUILDPATH)/floppy.sap TEST.PIC
+	$(SAPFS) -a $(BUILDPATH)/floppy.sap $(BUILDPATH)/TEST.PIC
 	@echo "mo/to floppy created!"
 
 main: main.asm
