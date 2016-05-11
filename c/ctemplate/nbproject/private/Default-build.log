@@ -1,2 +1,0 @@
-echo "make TARGET=MO5 or make TARGET=TO8"
-make TARGET=MO5 or make TARGET=TO8
