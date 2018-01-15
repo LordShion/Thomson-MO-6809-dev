@@ -5,14 +5,16 @@ SAPFS=sapfs
 PNG=png2mo5
 F2K5=f2k5
 BUILDPATH=build
+MAME=mame
+KEYMAP_FILE=~/.mame/keymaps/km_fr_LINUX.map
 
 all: floppy.sap #k5
 	$(SAPTOFD) $(BUILDPATH)/floppy.sap
 	
 run:
 	@echo "running"
-	@mess mo6 -nomaximize -flop1 $(BUILDPATH)/floppy.sap -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
-	@echo "mess ended"
+	$(MAME) mo6 -nomaximize -flop1 $(BUILDPATH)/floppy.sap -window -keymap_file $(KEYMAP_FILE)
+	@echo "mame ended"
 
 k5: main
 	@echo "creating mo5 cassette file..."
@@ -26,6 +28,7 @@ floppy.sap: main
 	@echo "mo/to floppy created!"
 
 main: main.asm
+	rm -rf $(BUILDPATH)
 
 	mkdir $(BUILDPATH)
 	@echo "assembling..."

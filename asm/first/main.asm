@@ -1,6 +1,6 @@
 ; MO5 Test stuff
 
-	ORG $3000
+	ORG $32000
 		; Could be a little lower ?
 
 main
