@@ -38,4 +38,7 @@ to run program in mess:
 in your Basic prompt type dir  to list files on disk
 
 use LOADM instructions to load and execute program in your emulated MOx computer
+
+ex for MO6
+LOADM"AUTO.BIN",32000,R   
  
