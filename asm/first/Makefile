@@ -4,6 +4,8 @@ SAPTOFD=saptofd
 SAPFS=sapfs
 PNG=png2mo5
 F2K5=f2k5
+EMULATOR=mame
+# EMULATOR=mess
 BUILDPATH=build
 
 all: floppy.sap #k5
@@ -11,8 +13,8 @@ all: floppy.sap #k5
 	
 run:
 	@echo "running"
-	@mess mo6 -nomaximize -flop1 $(BUILDPATH)/floppy.sap -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
-	@echo "mess ended"
+	@$(EMULATOR) mo6 -window -nomaximize -flop1 $(BUILDPATH)/floppy.sap -keymap -keymap_file /usr/share/games/mess/keymaps/km-fr.txt
+	@echo "$(EMULATOR) ended"
 
 k5: main
 	@echo "creating mo5 cassette file..."
